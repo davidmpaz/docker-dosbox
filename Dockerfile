@@ -6,11 +6,12 @@ RUN apt-get --allow-releaseinfo-change update && \
 
 # Turbo Pascal images and masm 6.15, manually installed
 COPY ./tp7/*.img /tmp/
-COPY ./masm615 /tmp/masm
+COPY ./ta2/*.img /tmp/ta2/
 
-RUN mkdir /tmp/tpsetup /dosbox && \
+RUN mkdir /tmp/tpsetup /tmp/tasetup /dosbox && \
     for i in /tmp/*.img; do echo $i; mcopy -m -i $i :: /tmp/tpsetup; done && \
-    mv /tmp/tpsetup /dosbox/ && mv /tmp/masm /dosbox/
+    for i in /tmp/ta2/*.img; do echo $i; mcopy -m -i $i :: /tmp/tasetup; done && \
+    mv /tmp/tpsetup /dosbox/ && mv /tmp/tasetup /dosbox/
 
 ENV RUN_XTERM=no
 ENV DISPLAY_WIDTH=1024

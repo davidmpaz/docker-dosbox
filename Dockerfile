@@ -4,11 +4,13 @@ RUN apt-get --allow-releaseinfo-change update && \
     apt-get install -y dosbox mtools  && \
     rm -rfv /var/lib/apt/lists/*
 
-# Turbo Pascal images, manually installed
+# Turbo Pascal images and masm 6.15, manually installed
 COPY ./tp7/*.img /tmp/
+COPY ./masm615 /tmp/masm
+
 RUN mkdir /tmp/tpsetup /dosbox && \
     for i in /tmp/*.img; do echo $i; mcopy -m -i $i :: /tmp/tpsetup; done && \
-    mv /tmp/tpsetup /dosbox
+    mv /tmp/tpsetup /dosbox/ && mv /tmp/masm /dosbox/
 
 ENV RUN_XTERM=no
 ENV DISPLAY_WIDTH=1024

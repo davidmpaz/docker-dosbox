@@ -13,4 +13,4 @@ Run [DOSBox](https://www.dosbox.com/) in a docker container.
 
 ## Volume
 
-There is a exposed volume for making files accessible to the container under: `/app/src`
+There is an exposed volume for making files accessible to the container under: `/app/src`

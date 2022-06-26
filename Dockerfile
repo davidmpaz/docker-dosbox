@@ -10,6 +10,8 @@ RUN mkdir /tmp/tpsetup /dosbox && \
     for i in /tmp/*.img; do echo $i; mcopy -m -i $i :: /tmp/tpsetup; done && \
     mv /tmp/tpsetup /dosbox
 
+COPY ./tasmed/* /dosbox/tasm/
+
 ENV RUN_XTERM=no
 ENV DISPLAY_WIDTH=1024
 ENV DISPLAY_HEIGHT=768
